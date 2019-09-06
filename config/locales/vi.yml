@@ -17,6 +17,8 @@ vi:
       settings: Cài đặt
       profile: Thông tin cá nhân
       users: Người dùng
+      subject: Chủ đề
+      mark_exams: Chấm điểm
   sessions:  
     new:
       title: Đăng nhập

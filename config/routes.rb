@@ -3,10 +3,12 @@ Rails.application.routes.draw do
     root "static_pages#home"
     
     get "/do_exam", to: "trainee_exams#do_exam"
+    patch "/do_exam", to: "trainee_exams#create"
     get "/signin", to: "sessions#new"
     post "/signin", to: "sessions#create"
     delete "/signout", to: "sessions#destroy"
-    resources :users, :subject, :questions, :exams, :trainee_exams
+    resources :users, :subject, :questions, :exams
+    resources :trainee_exams, except: :create
     resources :mark_exams, only: :index
   end
 end

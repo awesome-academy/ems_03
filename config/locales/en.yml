@@ -208,6 +208,7 @@ en:
       confirmation: Confirmation
       role: Role
       save_changes: Save changes
+      title: Edit
   views:
     pagination:
       first: "&laquo; First"

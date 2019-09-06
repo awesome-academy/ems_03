@@ -7,6 +7,7 @@
         <li><%= link_to t(".subjects"), subject_index_path %></li>
         <% if signed_in? %>
           <% if current_supervisor? %>
+            <li><%= link_to t(".new_exam"), new_exam_path(subject_id: 1) %></li>
             <li><%= link_to t(".questions"), questions_path %></li>
             <li><%= link_to t(".mark_exams"), mark_exams_path %></li>     
             <li><%= link_to t(".users"), users_path %></li>    

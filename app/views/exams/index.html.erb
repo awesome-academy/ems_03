@@ -1,14 +1,12 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".header" %></h1>
 
-<% if signed_in? %>
-  <% if current_supervisor? %>
-    <div class="container">
-      <%= link_to t(".new_exam"),
-        new_exam_path(subject_id: params[:subject_id]),
-        class: "btn btn-primary float-right" %>
-    </div>
-  <% end %>
+<% if signed_in? && current_supervisor? %>
+  <div class="container">
+    <%= link_to t(".new_exam"),
+      new_exam_path(subject_id: params[:subject_id]),
+      class: "btn btn-primary float-right" %>
+  </div>
 <% end %>
 
 <div class="container">

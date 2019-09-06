@@ -1,4 +1,4 @@
-<%= form_for @trainee_exam,  url: {action: :submit}, method: :patch |f| %>
+<%= form_for @trainee_exam, url: do_exam_path, method: :patch do |f| %>
   <div class="container">
     <%= hidden_field_tag :remaining_time, value: @remaining_time %>
     <div class="timer">
@@ -38,8 +38,8 @@
         <% end %>
       <% end %>
     </div>
-  <% end %>
-  <%= f.hidden_field :complete_time, value: @exam.time_limit - @remaining_time %>
+  <% end %>   
   <%= f.hidden_field :exam_id, value: @exam.id %>
+  <%= f.hidden_field :id, value: @trainee_exam.id %>
   <%= f.submit yield(:button_text), class: "btn btn-submit" %>
 <% end %>

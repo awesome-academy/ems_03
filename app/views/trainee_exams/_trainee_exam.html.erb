@@ -17,6 +17,9 @@
   <td>
     <%= l trainee_exam.created_at, format: :date_time %>
   </td>
+  <td>
+    <%= l Time.at(trainee_exam.complete_time).utc, format: :exam_time %>
+  </td>
   <td id="score-<%=trainee_exam.id%>">
     <%= trainee_exam.total_score %>
   </td>
@@ -29,12 +32,14 @@
      <%= t ".not_passed" %>
     <% end %>
   </td>
-  <td id="mark-<%=trainee_exam.id%>">
-    <% if trainee_exam.is_passed.nil? %>
-      <%= link_to t(".mark"), trainee_exam_path(trainee_exam),
-        class: "btn btn-primary", method: :patch, remote: true %>
-    <% else %>
-      <%= t ".marked" %>
-    <% end %>
-  </td>
+  <% if current_supervisor? %>
+    <td id="mark-<%=trainee_exam.id%>">
+      <% if trainee_exam.is_passed.nil? %>
+        <%= link_to t(".mark"), trainee_exam_path(trainee_exam),
+          class: "btn btn-primary", method: :patch, remote: true %>
+      <% else %>
+        <%= t ".marked" %>
+      <% end %>
+    </td>
+  <% end %>
 </tr>
