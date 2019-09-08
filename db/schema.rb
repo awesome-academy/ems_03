@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_043832) do
     t.bigint "exam_id"
     t.bigint "user_id"
     t.integer "total_score"
-    t.integer "complete_time"
+    t.integer "complete_time", default: 0
     t.boolean "is_passed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

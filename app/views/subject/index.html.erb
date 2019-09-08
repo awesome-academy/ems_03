@@ -1,13 +1,11 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".header" %></h1>
 
-<% if signed_in? %>
-  <% if current_supervisor? %>
-    <div class="container">
-      <%= button_to t(".new_subject"), {action: :new}, {method: :get,
-        class: "btn btn-primary", id: "btn-new-subject"} %>
-    </div>
-  <% end %>
+<% if signed_in? && current_supervisor? %>
+  <div class="container">
+    <%= button_to t(".new_subject"), {action: :new}, {method: :get,
+      class: "btn btn-primary", id: "btn-new-subject"} %>
+  </div>
 <% end %>
 
 <div class="container">

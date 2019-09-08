@@ -3,9 +3,9 @@
     <% if current_supervisor? %>
       <%= link_to exam.name, exam %>
     <% else %>
-      <%= link_to exam.name, new_trainee_exam_path(exam_id: exam.id) %>
+      <%= link_to exam.name, trainee_exams_path(exam_id: exam.id), method: :post %>
     <% end %>
   <% else %>
-    <%= link_to exam.name, new_trainee_exam_path(exam_id: exam.id) %>
+    <%= link_to exam.name, trainee_exams_path(exam_id: exam.id), method: :post %>
   <% end %>
 </li>
