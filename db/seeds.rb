@@ -2,13 +2,22 @@ User.create!(name: "admin",
   email: "admin@gmail.com",
   role: 1,
   password: "12345678",
-  password_confirmation: "12345678")
+  password_confirmation: "12345678",
+  confirmed_at: Time.now)
+User.create!(name: "bdmin",
+  email: "bdmin@gmail.com",
+  role: 1,
+  password: "12345678",
+  password_confirmation: "12345678",
+  confirmed_at: Time.now)
+
 
 User.create!(name: "user",
   email: "user@gmail.com",
   role: 0,
   password: "12345678",
-  password_confirmation: "12345678")
+  password_confirmation: "12345678",
+  confirmed_at: Time.now)
 
 40.times do |n|
   name  = Faker::Name.name
@@ -17,7 +26,8 @@ User.create!(name: "user",
   User.create!(name: name,
     email: email,
     password: password,
-    password_confirmation: password)
+    password_confirmation: password,
+    confirmed_at: Time.now)
 end
 
 Subject.create!([{name: "Ruby"},
@@ -40,7 +50,7 @@ level = Random.new
     if q_type == Question.question_types[:single_choice]
       subject.questions.create!(
         content: qcontent,
-        supervisor_id: 1,
+        user_id: 1,
         question_type: q_type,
         level: level.rand(1..3),
         answers_attributes: [{
@@ -63,7 +73,7 @@ level = Random.new
     elsif q_type == Question.question_types[:multi_choice]
         subject.questions.create!(
           content: qcontent,
-          supervisor_id: 1,
+          user_id: 1,
           question_type: q_type,
           level: level.rand(1..3),
           answers_attributes: [{

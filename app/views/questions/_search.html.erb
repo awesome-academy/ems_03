@@ -1,0 +1,21 @@
+<div class="cart-body">
+  <%= search_form_for @search, class: "form-inline" do |f| %> 
+    <%= f.label "Content" %>
+    <%= f.text_field :content_cont, placeholder: "content",  class: "form-control mr-sm-2" %>
+
+    <%= f.label "Created_from" %>
+    <%= f.date_field :created_at_gt,  class: "form-control mr-sm-2" %>
+    <%= f.label "to" %>
+    <%= f.date_field :created_at_lt, placeholder: Time.now,  class: "form-control mr-sm-2" %>
+
+    <%= f.label "Subject" %>
+    <%= f.collection_select :subject_name_cont, subject_collection, name, name, {},
+      {class: "form-control"}%>
+
+    <%= f.label "Supervisor" %>
+    <%= f.collection_select :user_name_cont, supervisor_collection, name, name, {},
+      {class: "form-control"}%>
+
+    <%= f.submit "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+  <% end %>
+</div>

@@ -4,8 +4,11 @@ class QuestionsController < ApplicationController
   before_action :load_question, except: %i(index new create)
 
   def index
-    @questions = Question.sort_by_name.page(params[:page])
-                         .per Settings.questions_per_page
+    # @questions = Question.sort_by_name.page(params[:page])
+    #                      .per Settings.questions_per_page
+    @search = Question.ransack params[:q]
+    @questions = @search.result.page(params[:page])
+                        .per Settings.questions_per_page
   end
 
   def create

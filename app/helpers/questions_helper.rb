@@ -3,6 +3,10 @@ module QuestionsHelper
     Subject.select :name, :id
   end
 
+  def supervisor_collection
+    User.supervisor.select :name
+  end
+
   def id
     :id
   end

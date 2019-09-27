@@ -64,13 +64,14 @@ ActiveRecord::Schema.define(version: 2019_09_23_023039) do
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "subject_id"
-    t.integer "supervisor_id"
+    t.bigint "user_id"
     t.string "content"
     t.integer "question_type", default: 1
     t.integer "level", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_questions_on_subject_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,6 +121,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_023039) do
   add_foreign_key "exam_questions", "questions"
   add_foreign_key "exams", "subjects"
   add_foreign_key "questions", "subjects"
+  add_foreign_key "questions", "users"
   add_foreign_key "trainee_exams", "exams"
   add_foreign_key "trainee_exams", "users"
 end

@@ -1,3 +1,26 @@
-<li>
-  <%= link_to question.content, question %>
-</li>
+<tr>
+  <td>
+    <%= question.id %>
+  </td>
+  <td>
+    <%= link_to question.content, question %>
+  </td>
+  <td>
+    <%= question.subject.name %>
+  </td> 
+  <td>
+    <%= question.user.name %>
+  </td>
+  <td>
+    <%= question.question_type %>
+  </td>
+  <td>
+    <%= question.level %>
+  </td>
+  <td>
+    <%= link_to (image_tag asset_path("edit.png"), :size => "16x16"), edit_question_path(question) %> 
+    <%= button_tag (image_tag asset_path("delete.png"), :size => "16x16"),
+      {method: :delete,
+      data:{confirm: t(".sure")}} %>
+  </td>
+</tr>

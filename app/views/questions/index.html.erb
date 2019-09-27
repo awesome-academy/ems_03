@@ -4,12 +4,27 @@
 <div class="container">
   <%= link_to t(".new_question"), {action: :new}, {method: :get,
     class: "btn btn-primary", id: "btn-new-question"} %>
-</div>
 
-<div class="container">
-  <ul class="questions">
-    <%= render @questions %>
-  </ul>
-</div>
+  <div class="border-search">
+    <%= render partial: "search", search: @search %>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= sort_link(@search, :id) %></th>
+          <th><%= sort_link(@search, :content) %></th>
+          <th><%= sort_link(@search, :subject_name, "Subject") %></th>
+          <th><%= sort_link(@search, :user_name) %></th>
+          <th><%= sort_link(@search, :question_type) %></th>  
+          <th><%= sort_link(@search, :level) %></th>
+        </tr>
+      </thead>
+      <tbody id="table_questions">
+        <%= render @questions %>
+      </tbody>
+    </table>
+  </div>
 
-<%= paginate @questions, theme: "twitter-bootstrap-4" %>
+  <%= paginate @questions, theme: "twitter-bootstrap-4" %>
+</div>

@@ -1,8 +1,9 @@
 class Question < ApplicationRecord
-  QUESTION_PARAMS = [:content, :question_type, :level, :subject_id,
+  QUESTION_PARAMS = [:content, :question_type, :level, :subject_id, :user_id,
   answers_attributes: [:id, :content, :correct, :_destroy]].freeze
 
   belongs_to :subject
+  belongs_to :user
   has_many :answers, dependent: :destroy
   has_many :exam_questions
   has_many :exams, through: :exam_questions
